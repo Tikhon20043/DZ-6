@@ -1,0 +1,43 @@
+//Напишите функцию `findCommonElements`, которая принимает два
+//статических массива и находит общие элементы. Используйте указатели для
+//прохода по массивам. Верните массив общих элементов и его размер.
+
+
+#include <iostream>
+using namespace std;
+
+int* findCommonElements(int* arr1, int size1, int* arr2, int size2, int& commonSize) {
+    int* commonElements = new int[min(size1, size2)];
+    commonSize = 0;
+
+    for (int i = 0; i < size1; i++) {
+        for (int j = 0; j < size2; j++) {
+            if (*(arr1 + i) == *(arr2 + j)) {
+                commonElements[commonSize++] = *(arr1 + i);
+                break;
+            }
+        }
+    }
+    
+    return commonElements;
+}
+
+int main() {
+    const int SIZE1 = 5;
+    const int SIZE2 = 6;
+    
+    int arr1[SIZE1] = {1, 2, 3, 4, 5};
+    int arr2[SIZE2] = {4, 5, 6, 7, 8, 9};
+
+    int commonSize;
+    int* commonElements = findCommonElements(arr1, SIZE1, arr2, SIZE2, commonSize);
+
+    cout << "Общие элементы: ";
+    for (int i = 0; i < commonSize; i++) {
+        cout << commonElements[i] << " ";
+    }
+    cout << endl;
+
+    delete[] commonElements;
+    return 0;
+}
