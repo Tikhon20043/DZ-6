@@ -1,0 +1,34 @@
+//Напишите функцию sqrti, которая принимает вещественное число x и возвращает квадратный корень из x. Если x отрицательное, то функция должна сгенерировать исключение типа с сообщением “Negative argument”.
+//Примечание: sqrt() подключаем через #include <cmath>
+//Примечание: для выхода из функции можно использовать exit(0) из библиотеки stdlib.h
+//Продемонстрируйте работу функции.
+
+
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+
+using namespace std;
+
+double sqrti(double x) {
+    if (x < 0) {
+        throw runtime_error("Negative argument");
+    }
+    return sqrt(x);
+}
+
+int main() {
+    double number;
+    cout << "Введите вещественное число: ";
+    cin >> number;
+
+    try {
+        double result = sqrti(number);
+        cout << "Квадратный корень: " << result << endl;
+    } catch (const runtime_error& e) {
+        cerr << e.what() << endl;
+        exit(0);
+    }
+
+    return 0;
+}
