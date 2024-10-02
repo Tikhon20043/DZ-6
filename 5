@@ -1,0 +1,38 @@
+//Напишите функцию, которая принимает два параметра по значению: целое
+//число n и массив целых чисел arr.  Функция должна возвращать сумму n-го
+//элемента массива и n. Например, если n = 2 и arr = {1, 2, 3, 4}, то
+//функция должна вернуть 5 (2 + 3). Продемонстрируйте работу функции.
+
+
+#include <iostream>
+using namespace std;
+
+int sumElementAndIndex(int n, int* arr) {
+    return arr[n] + n;
+}
+
+int main() {
+    int size;
+    cout << "Введите размер массива: ";
+    cin >> size;
+
+    int* arr = new int[size];
+    cout << "Введите элементы массива: ";
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+
+    int n;
+    cout << "Введите индекс элемента для суммирования: ";
+    cin >> n;
+
+    if (n >= 0 && n < size) {
+        int result = sumElementAndIndex(n, arr);
+        cout << "Сумма " << n << "-го элемента и индекса: " << result << endl;
+    } else {
+        cout << "Индекс вне диапазона!" << endl;
+    }
+
+    delete[] arr;
+    return 0;
+}
