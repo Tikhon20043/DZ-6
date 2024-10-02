@@ -1,0 +1,65 @@
+//Напишите функцию `mergeAndCompare`, которая принимает два
+//динамических массива и сравнивает их. Если размеры массивов разные,
+//возвращает -1. Если размеры одинаковые, объединяет их в новый массив и
+//возвращает этот массив и его размер через параметры.
+
+
+
+#include <iostream>
+using namespace std;
+
+int* mergeAndCompare(int* arr1, int size1, int* arr2, int size2, int& mergedSize) {
+    if (size1 != size2) {
+        return nullptr;
+    }
+
+    mergedSize = size1 + size2;
+    int* mergedArray = new int[mergedSize];
+
+    for (int i = 0; i < size1; i++) {
+        mergedArray[i] = arr1[i];
+        mergedArray[i + size1] = arr2[i];
+    }
+
+    return mergedArray;
+}
+
+int main() {
+    int size1, size2;
+
+    cout << "Введите размер первого массива: ";
+    cin >> size1;
+    int* arr1 = new int[size1];
+    cout << "Введите элементы первого массива: ";
+    for (int i = 0; i < size1; i++) {
+        cin >> arr1[i];
+    }
+
+    cout << "Введите размер второго массива: ";
+    cin >> size2;
+    int* arr2 = new int[size2];
+    cout << "Введите элементы второго массива: ";
+    for (int i = 0; i < size2; i++) {
+        cin >> arr2[i];
+    }
+
+    int mergedSize;
+    int* mergedArray = mergeAndCompare(arr1, size1, arr2, size2, mergedSize);
+
+    if (mergedArray == nullptr) {
+        cout << "Размеры массивов различны." << endl;
+    } else {
+        cout << "Объединенный массив: ";
+        for (int i = 0; i < mergedSize; i++) {
+            cout << mergedArray[i] << " ";
+        }
+        cout << endl;
+
+        delete[] mergedArray;
+    }
+
+    delete[] arr1;
+    delete[] arr2;
+
+    return 0;
+}
