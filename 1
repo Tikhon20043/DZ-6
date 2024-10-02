@@ -1,0 +1,19 @@
+//Напишите функцию с именем square, которая принимает один параметр типа 
+//int и возвращает его квадрат. В main запросите данные у пользователя и 
+//воспользуйтесь функцией для вывода результата на экран.
+
+
+#include <iostream>
+using namespace std;
+
+int square(int num) {
+    return num * num;
+}
+
+int main() {
+    int number;
+    cout << "Введите число: ";
+    cin >> number;
+    cout << "Квадрат числа: " << square(number) << endl;
+    return 0;
+}
